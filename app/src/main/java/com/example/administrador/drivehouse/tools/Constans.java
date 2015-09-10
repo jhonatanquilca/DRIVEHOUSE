@@ -13,7 +13,7 @@ public class Constans {
     /**
      * Dirección IP de genymotion o AVD
      */
-    private static final String IP = "http://192.168.1.2:";
+    private static final String WEBSERVICE = "http://localhost/driveworkhouse/cliente/clienteWs/webService";
 
 
 }
