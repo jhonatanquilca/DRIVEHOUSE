@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -17,45 +18,27 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
-
+    // controles
+    public ImageButton botonPrueba;
+    public EditText campoTexto;
+//    https://groups.google.com/forum/#!msg/desarrolladores-android/v0URomisIcs/5RN7QVmG7QYJ
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-      setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main);
         botonPrueba = (ImageButton) findViewById(R.id.imageButton);
+        campoTexto = (EditText) findViewById(R.id.editText);
+
         botonPrueba.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"mi texto",Toast.LENGTH_LONG).show();
-                VolleySingleton.
-                        getInstance(getActivity()).
-                        addToRequestQueue(
-                                new JsonObjectRequest(
-                                        Request.Method.GET,
-                                        Constantes.GET,
-                                        (String) null,
-                                        new Response.Listener<JSONObject>() {
+                Toast.makeText(getApplicationContext(), "mi texto", Toast.LENGTH_LONG).show();
 
-                                            @Override
-                                            public void onResponse(JSONObject response) {
-                                                // Procesar la respuesta Json
 
-                                            }
-                                        },
-                                        new Response.ErrorListener() {
-                                            @Override
-                                            public void onErrorResponse(VolleyError error) {
-                                                Log.d(TAG, "Error Volley: " + error.getMessage());
-                                            }
-                                        }
-
-                                )
-                        );
             }
         });
     }
 
-    public ImageButton botonPrueba;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
