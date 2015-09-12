@@ -2,5 +2,9 @@
     <string name="app_name">DRIVEHOUSE</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="activity_cliente">Clientes</string>
+    <string name="action_cliente">Clientes</string>
+    <string name="title_activity_cliente">Clientes</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

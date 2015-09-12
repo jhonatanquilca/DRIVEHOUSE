@@ -1,5 +1,6 @@
 package com.example.administrador.drivehouse;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,11 +10,21 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.administrador.drivehouse.ui.actividaes.ClienteActivity;
+import com.example.administrador.drivehouse.web.VolleySingleton;
+
+import org.json.JSONObject;
+
 public class MainActivity extends AppCompatActivity {
     // controles
     public ImageButton botonPrueba;
     public EditText campoTexto;
-//    https://groups.google.com/forum/#!msg/desarrolladores-android/v0URomisIcs/5RN7QVmG7QYJ
+
+    //    https://groups.google.com/forum/#!msg/desarrolladores-android/v0URomisIcs/5RN7QVmG7QYJ
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,8 +35,31 @@ public class MainActivity extends AppCompatActivity {
         botonPrueba.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "mi texto", Toast.LENGTH_LONG).show();
+                // Realizar petición GET_BY_ID
+                VolleySingleton.getInstance(getApplicationContext()).addToRequestQueue(
+                        new JsonObjectRequest(
+                                Request.Method.GET,
+                                "http://192.168.1.3/driveworkhouse/cliente/clienteWs/view/id/13",
+                                (String) null,
+                                new Response.Listener<JSONObject>() {
 
+                                    @Override
+                                    public void onResponse(JSONObject response) {
+                                        // Procesar respuesta Json
+//                                        procesarRespuesta(response);
+                                        campoTexto.setText(response.toString());
+
+                                    }
+                                },
+                                new Response.ErrorListener() {
+                                    @Override
+                                    public void onErrorResponse(VolleyError error) {
+                                        Toast.makeText(getApplicationContext(),"Error Volley: " + error.getMessage(),Toast.LENGTH_LONG).show();
+//                                        Log.d(TAG, "Error Volley: " + error.getMessage());
+                                    }
+                                }
+                        )
+                );
 
             }
         });
@@ -46,9 +80,14 @@ public class MainActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (id) {
+            case R.id.action_settings:
+                return true;
+            case R.id.action_cliente:
+                Intent i=new Intent(this, ClienteActivity.class);
+                startActivity(i);
+                break;
+
         }
 
         return super.onOptionsItemSelected(item);

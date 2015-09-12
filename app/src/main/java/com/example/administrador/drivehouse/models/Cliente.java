@@ -19,8 +19,9 @@ public class Cliente {
     private String usuario_actualizacion_id; // int(11) DEFAULT NULL,
     private String fecha_creacion; // datetime NOT NULL,
     private String fecha_actualizacion; // datetime DEFAULT NULL,
+    private String nombre_completo; // datetime DEFAULT NULL,
 
-    public Cliente(String id, String nombre, String apellido, String documento, String telefono, String celular, String email_1, String email_2, String estado, String usuario_creacion_id, String usuario_actualizacion_id, String fecha_creacion, String fecha_actualizacion) {
+    public Cliente(String id, String nombre, String apellido, String documento, String telefono, String celular, String email_1, String email_2, String estado, String usuario_creacion_id, String usuario_actualizacion_id, String fecha_creacion, String fecha_actualizacion, String nombre_completo) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -34,6 +35,7 @@ public class Cliente {
         this.usuario_actualizacion_id = usuario_actualizacion_id;
         this.fecha_creacion = fecha_creacion;
         this.fecha_actualizacion = fecha_actualizacion;
+        this.nombre_completo = nombre_completo;
     }
 
     public String getId() {
@@ -86,6 +88,10 @@ public class Cliente {
 
     public String getFecha_actualizacion() {
         return fecha_actualizacion;
+    }
+
+    public String getNombre_completo() {
+        return nombre_completo;
     }
 
     public void setId(String id) {

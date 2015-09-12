@@ -54,7 +54,7 @@ public class VolleySingleton {
      * @param req petición
      * @param <T> Resultado final de tipo T
      */
-    public <T> void andraddToRequestQueue(Request<T> req) {
+    public <T> void addToRequestQueue(Request<T> req) {
         getRequestQueue().add(req);
     }
 }
