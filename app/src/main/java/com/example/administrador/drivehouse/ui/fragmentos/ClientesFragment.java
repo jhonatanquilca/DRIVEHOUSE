@@ -49,7 +49,9 @@ public class ClientesFragment extends Fragment {
     /*
     Instancia global del FAB
      */
-    com.melnykov.fab.FloatingActionButton fab;
+    com.software.shell.fab.FloatingActionButton fab;
+
+    //    instanacion para el json
     private Gson gson = new Gson();
 
     public ClientesFragment() {
@@ -76,12 +78,12 @@ public class ClientesFragment extends Fragment {
 
         cargarAdaptador();
 
-        fab = (com.melnykov.fab.FloatingActionButton) v.findViewById(R.id.fab);
-        // Asignar escucha al FAB
+        fab = (com.software.shell.fab.FloatingActionButton) v.findViewById(R.id.fab);
+//        Asignar escucha al FAB
         fab.setOnClickListener(new View.OnClickListener() {
                                    @Override
                                    public void onClick(View v) {
-                                       Toast.makeText(v.getContext(),"Insert",Toast.LENGTH_LONG).show();
+                                       Toast.makeText(v.getContext(), "Insert", Toast.LENGTH_SHORT).show();
                                        // Iniciar actividad de inserción
 //                                       getActivity().startActivityForResult(
 //                                               new Intent(getActivity(), InsertActivity.class), 3);
@@ -101,7 +103,7 @@ public class ClientesFragment extends Fragment {
         VolleySingleton.getInstance(getActivity()).addToRequestQueue(
                 new JsonObjectRequest(
                         Request.Method.GET,
-                        "http://192.168.1.2/driveworkhouse/cliente/clienteWs/admin",
+                        "http://192.168.1.61/driveworkhouse/cliente/clienteWs/admin",
                         (String) null,
                         new Response.Listener<JSONObject>() {
 

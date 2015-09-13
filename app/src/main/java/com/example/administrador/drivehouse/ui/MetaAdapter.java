@@ -64,7 +64,7 @@ public class MetaAdapter extends RecyclerView.Adapter<MetaAdapter.ClienteViewHol
      */
     @Override
     public void onItemClick(View view, int position) {
-        Toast.makeText((Activity) context,items.get(position).getId(),Toast.LENGTH_LONG).show();
+        Toast.makeText((Activity) context,items.get(position).getId(),Toast.LENGTH_SHORT).show();
 //        DetailActivity.launch(
 //                (Activity) context, items.get(position).getIdMeta());
     }
