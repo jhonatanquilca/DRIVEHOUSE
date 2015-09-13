@@ -84,6 +84,8 @@ public class ClientesFragment extends Fragment {
                                    @Override
                                    public void onClick(View v) {
                                        Toast.makeText(v.getContext(), "Insert", Toast.LENGTH_SHORT).show();
+                                       fab.playHideAnimation();
+
                                        // Iniciar actividad de inserción
 //                                       getActivity().startActivityForResult(
 //                                               new Intent(getActivity(), InsertActivity.class), 3);
@@ -91,6 +93,7 @@ public class ClientesFragment extends Fragment {
                                }
         );
 
+        fab.playShowAnimation();   // plays the show animation
         return v;
     }
 
