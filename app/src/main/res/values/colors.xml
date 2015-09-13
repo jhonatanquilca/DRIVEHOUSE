@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary_dark">#3078D7</color>
+    <color name="primary">#4A89DC</color>
+    <color name="primary_light">#649AE1</color>
+    <color name="success_dark">#5BC24C</color>
+    <color name="success">#70CA63</color>
+    <color name="success_light">#85D27A</color>
+    <color name="info_dark">#27A2CF</color>
+    <color name="info">#3BAFDA</color>
+    <color name="info_light">#55BADF</color>
+    <color name="warning_dark">#F5B025</color>
+    <color name="warning">#F6BB42</color>
+    <color name="warning_ligth">#F7C65F</color>
+    <color name="danger_dark">#E63F24</color>
+    <color name="danger">#E9573F</color>
+    <color name="danger_light">#EC6F5A</color>
+    <color name="gray_dark">#555</color>
+    <color name="gray">#999</color>
+    <color name="gray_light">#EEE</color>
+
+    <color name="tertiary">#455561</color>
+    <color name="background">#FFFFFF</color>
+    <color name="textColorPrimary">#323232</color>
+    <color name="textColorSecondary">#434343</color>
+    <color name="transparent_actionbar_background">#24000000</color>
+
+    <!-- MINI FAB -->
+    <color name="colorNormalMini">#00B0FF</color>
+    <color name="colorPressedMini">#40C4FF</color>
+    <color name="colorRippleMini">#E1F5FE</color>
+
+    <!-- BACKGROUND DETAIL -->
+    <color name="saludColor">#41AB97</color>
+    <color name="finanzasColor">#FEC246</color>
+    <color name="espiritualColor">#72C68B</color>
+    <color name="profesionalColor">#EC6B56</color>
+    <color name="materialColor">#462445</color>
+</resources>

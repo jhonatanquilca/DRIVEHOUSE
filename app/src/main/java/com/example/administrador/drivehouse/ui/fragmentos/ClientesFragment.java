@@ -1,5 +1,6 @@
 package com.example.administrador.drivehouse.ui.fragmentos;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -59,10 +60,10 @@ public class ClientesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Toast.makeText(
-                getActivity(),
-                "Fragment",
-                Toast.LENGTH_LONG).show();
+//        Toast.makeText(
+//                getActivity(),
+//                "Fragment",
+//                Toast.LENGTH_LONG).show();
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_clientes, container, false);
 
@@ -75,19 +76,32 @@ public class ClientesFragment extends Fragment {
 
         cargarAdaptador();
 
+        fab = (com.melnykov.fab.FloatingActionButton) v.findViewById(R.id.fab);
+        // Asignar escucha al FAB
+        fab.setOnClickListener(new View.OnClickListener() {
+                                   @Override
+                                   public void onClick(View v) {
+                                       Toast.makeText(v.getContext(),"Insert",Toast.LENGTH_LONG).show();
+                                       // Iniciar actividad de inserción
+//                                       getActivity().startActivityForResult(
+//                                               new Intent(getActivity(), InsertActivity.class), 3);
+                                   }
+                               }
+        );
+
         return v;
     }
 
     private void cargarAdaptador() {
-        Toast.makeText(
-                getActivity(),
-                "Carga",
-                Toast.LENGTH_LONG).show();
+//        Toast.makeText(
+//                getActivity(),
+//                "Carga",
+//                Toast.LENGTH_LONG).show();
         // Realizar petición GET_BY_ID
         VolleySingleton.getInstance(getActivity()).addToRequestQueue(
                 new JsonObjectRequest(
                         Request.Method.GET,
-                        "http://192.168.1.3/driveworkhouse/cliente/clienteWs/admin",
+                        "http://192.168.1.2/driveworkhouse/cliente/clienteWs/admin",
                         (String) null,
                         new Response.Listener<JSONObject>() {
 
@@ -131,10 +145,10 @@ public class ClientesFragment extends Fragment {
                 adapter = new MetaAdapter(Arrays.asList(clientes), getActivity());
                 // Setear adaptador a la lista
                 lista.setAdapter(adapter);
-                Toast.makeText(
-                        getActivity(),
-                        "Datos",
-                        Toast.LENGTH_LONG).show();
+//                Toast.makeText(
+//                        getActivity(),
+//                        "Datos",
+//                        Toast.LENGTH_LONG).show();
             } else {
                 Toast.makeText(
                         getActivity(),

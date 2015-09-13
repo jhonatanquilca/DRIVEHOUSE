@@ -15,10 +15,10 @@ public class ClienteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cliente);
-        Toast.makeText(
-                getApplicationContext(),
-                "Inicion",
-                Toast.LENGTH_LONG).show();
+//        Toast.makeText(
+//                getApplicationContext(),
+//                "Inicion",
+//                Toast.LENGTH_LONG).show();
 //        inicializacion del fregmento principal
 //        if (savedInstanceState == null) {
 

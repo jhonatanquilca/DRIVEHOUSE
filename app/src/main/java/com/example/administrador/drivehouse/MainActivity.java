@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
                 VolleySingleton.getInstance(getApplicationContext()).addToRequestQueue(
                         new JsonObjectRequest(
                                 Request.Method.GET,
-                                "http://192.168.1.3/driveworkhouse/cliente/clienteWs/view/id/13",
+                                "http://192.168.1.2/driveworkhouse/cliente/clienteWs/view/id/13",
                                 (String) null,
                                 new Response.Listener<JSONObject>() {
 
