@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/gray_light"
@@ -16,7 +17,6 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginRight="3dp"
         android:src="@mipmap/ic_action_white_user" />
     <!-- Nombre -->
     <TextView
@@ -30,28 +30,54 @@
         android:text="Nombre Completo"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/gray_dark" />
-    <!-- Prioridad -->
+
+    <!-- Deuda -->
+    <TextView
+        android:id="@+id/deuda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/nombre_completo"
+        android:layout_alignStart="@+id/nombre_completo"
+        android:layout_below="@+id/nombre_completo"
+        android:text="Deuda"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/gray_dark" />
+
+    <!-- Docuento -->
     <TextView
         android:id="@+id/documento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/nombre_completo"
-        android:layout_marginTop="8dp"
+        android:layout_alignLeft="@+id/deuda"
+        android:layout_alignStart="@+id/deuda"
+        android:layout_below="@+id/deuda"
         android:text="Documento"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textStyle="italic" />
 
-    <!-- Categoría -->
-    <TextView
-        android:id="@+id/deuda"
+
+    <com.software.shell.fab.FloatingActionButton
+        android:id="@+id/fab_edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:text="Deuda"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/gray_dark" />
-
+        android:layout_below="@+id/nombre_completo"
+        android:layout_gravity="center|right"
+        fab:button_color="@color/primary_light"
+        fab:button_colorPressed="@color/primary"
+        fab:button_colorRipple="@color/primary_dark"
+        fab:hide_animation="@anim/fab_scale_down"
+        fab:image="@mipmap/ic_action_white_pencil"
+        fab:image_size="24dp"
+        fab:shadowResponsiveEffect_enabled="true"
+        fab:shadow_color="@color/primary_dark"
+        fab:shadow_radius="4dp"
+        fab:shadow_xOffset="1dp"
+        fab:shadow_yOffset="1.50dp"
+        fab:show_animation="@anim/fab_scale_up"
+        fab:stroke_color="@color/fab_material_blue_grey_500"
+        fab:type="MINI" />
 
 </RelativeLayout>

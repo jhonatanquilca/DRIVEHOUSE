@@ -13,30 +13,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="3dp"
-        android:scrollbars="vertical"
-        android:background="@color/gr"/>
+        android:scrollbars="vertical" />
 
     <com.software.shell.fab.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_gravity="bottom|right"
-        android:layout_margin="16dp"
-        fab:button_color="@color/primary_light"
-        fab:button_colorPressed="@color/primary"
-        fab:button_colorRipple="@color/primary_dark"
+        android:layout_gravity="bottom|center"
+        fab:button_color="@color/success_light"
+        fab:button_colorPressed="@color/success"
+        fab:button_colorRipple="@color/success_dark"
         fab:image="@mipmap/ic_action_white_userplus"
         fab:image_size="24dp"
         fab:shadowResponsiveEffect_enabled="true"
-        fab:shadow_color="@color/primary_dark"
+        fab:shadow_color="@color/gray_dark"
         fab:shadow_radius="4dp"
         fab:shadow_xOffset="1dp"
         fab:shadow_yOffset="1.50dp"
         fab:show_animation="@anim/fab_scale_up"
         fab:hide_animation="@anim/fab_scale_down"
-        fab:stroke_color="@color/fab_material_blue_grey_500"
-        fab:type="DEFAULT" />
+        fab:type="DEFAULT"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

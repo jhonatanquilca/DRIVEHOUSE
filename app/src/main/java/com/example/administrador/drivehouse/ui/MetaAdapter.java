@@ -53,7 +53,7 @@ public class MetaAdapter extends RecyclerView.Adapter<MetaAdapter.ClienteViewHol
     public void onBindViewHolder(ClienteViewHolder viewHolder, int i) {
         viewHolder.nombre_completo.setText(items.get(i).getNombre_completo());
         viewHolder.documento.setText(items.get(i).getDocumento());
-        viewHolder.deuda.setText("60");
+        viewHolder.deuda.setText("Deuda: $"+items.get(i).getDeuda());
     }
 
     /**

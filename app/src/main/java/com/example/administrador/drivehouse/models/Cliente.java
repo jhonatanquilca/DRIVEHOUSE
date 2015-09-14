@@ -20,8 +20,9 @@ public class Cliente {
     private String fecha_creacion; // datetime NOT NULL,
     private String fecha_actualizacion; // datetime DEFAULT NULL,
     private String nombre_completo; // datetime DEFAULT NULL,
+    private String deuda; // datetime DEFAULT NULL,
 
-    public Cliente(String id, String nombre, String apellido, String documento, String telefono, String celular, String email_1, String email_2, String estado, String usuario_creacion_id, String usuario_actualizacion_id, String fecha_creacion, String fecha_actualizacion, String nombre_completo) {
+    public Cliente(String id, String nombre, String apellido, String documento, String telefono, String celular, String email_1, String email_2, String estado, String usuario_creacion_id, String usuario_actualizacion_id, String fecha_creacion, String fecha_actualizacion, String nombre_completo, String deuda) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -36,6 +37,7 @@ public class Cliente {
         this.fecha_creacion = fecha_creacion;
         this.fecha_actualizacion = fecha_actualizacion;
         this.nombre_completo = nombre_completo;
+        this.deuda = deuda;
     }
 
     public String getId() {
@@ -160,5 +162,13 @@ public class Cliente {
                 this.celular.compareTo(cliente.celular) == 0;
 
 
+    }
+
+    public String getDeuda() {
+        return deuda;
+    }
+
+    public void setDeuda(String deuda) {
+        this.deuda = deuda;
     }
 }
