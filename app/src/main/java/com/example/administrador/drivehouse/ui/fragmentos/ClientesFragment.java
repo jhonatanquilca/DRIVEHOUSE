@@ -1,6 +1,5 @@
 package com.example.administrador.drivehouse.ui.fragmentos;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,7 +15,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.administrador.drivehouse.R;
 import com.example.administrador.drivehouse.models.Cliente;
-import com.example.administrador.drivehouse.ui.MetaAdapter;
+import com.example.administrador.drivehouse.ui.ClienteAdapter;
 import com.example.administrador.drivehouse.web.VolleySingleton;
 import com.google.gson.Gson;
 
@@ -34,7 +33,7 @@ public class ClientesFragment extends Fragment {
     /*
         Adaptador del recycler view
          */
-    private MetaAdapter adapter;
+    private ClienteAdapter adapter;
 
     /*
     Instancia global del recycler view
@@ -147,7 +146,7 @@ public class ClientesFragment extends Fragment {
                 // Parsear con Gson
                 Cliente[] clientes = gson.fromJson(mensaje.toString(), Cliente[].class);
                 // Inicializar adaptador
-                adapter = new MetaAdapter(Arrays.asList(clientes), getActivity());
+                adapter = new ClienteAdapter(Arrays.asList(clientes), getActivity());
                 // Setear adaptador a la lista
                 lista.setAdapter(adapter);
 //                Toast.makeText(

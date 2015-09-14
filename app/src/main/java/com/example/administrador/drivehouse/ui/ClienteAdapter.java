@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * Created by Administrador on 12/09/2015.
  */
-public class MetaAdapter extends RecyclerView.Adapter<MetaAdapter.ClienteViewHolder>
+public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ClienteViewHolder>
         implements ItemClickListener {
     /**
      * Lista de objetos Meta que representan la fuente de datos
@@ -32,7 +32,7 @@ public class MetaAdapter extends RecyclerView.Adapter<MetaAdapter.ClienteViewHol
     private Context context;
 
 
-    public MetaAdapter(List<Cliente> items, Context context) {
+    public ClienteAdapter(List<Cliente> items, Context context) {
         this.context = context;
         this.items = items;
     }
@@ -50,10 +50,11 @@ public class MetaAdapter extends RecyclerView.Adapter<MetaAdapter.ClienteViewHol
     }
 
     @Override
-    public void onBindViewHolder(ClienteViewHolder viewHolder, int i) {
+    public void onBindViewHolder(final ClienteViewHolder viewHolder, int i) {
         viewHolder.nombre_completo.setText(items.get(i).getNombre_completo());
         viewHolder.documento.setText(items.get(i).getDocumento());
-        viewHolder.deuda.setText("Deuda: $"+items.get(i).getDeuda());
+        viewHolder.deuda.setText("Deuda: $" + items.get(i).getDeuda());
+
     }
 
     /**
@@ -64,7 +65,7 @@ public class MetaAdapter extends RecyclerView.Adapter<MetaAdapter.ClienteViewHol
      */
     @Override
     public void onItemClick(View view, int position) {
-        Toast.makeText((Activity) context,items.get(position).getId(),Toast.LENGTH_SHORT).show();
+        Toast.makeText((Activity) context, items.get(position).getId(), Toast.LENGTH_SHORT).show();
 //        DetailActivity.launch(
 //                (Activity) context, items.get(position).getIdMeta());
     }
@@ -77,6 +78,7 @@ public class MetaAdapter extends RecyclerView.Adapter<MetaAdapter.ClienteViewHol
         public TextView documento;
         public TextView deuda;
         public ItemClickListener listener;
+        public com.software.shell.fab.FloatingActionButton fab_edit;
 
         public ClienteViewHolder(View v, ItemClickListener listener) {
             super(v);
@@ -84,6 +86,16 @@ public class MetaAdapter extends RecyclerView.Adapter<MetaAdapter.ClienteViewHol
             documento = (TextView) v.findViewById(R.id.documento);
             deuda = (TextView) v.findViewById(R.id.deuda);
             this.listener = listener;
+            fab_edit = (com.software.shell.fab.FloatingActionButton) v.findViewById(R.id.fab_edit);
+
+            fab_edit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(v.getContext(), "Insert " + getPosition(), Toast.LENGTH_SHORT).show();
+
+                }
+            });
+
             v.setOnClickListener(this);
         }
 
