@@ -50,10 +50,19 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ClienteV
     }
 
     @Override
-    public void onBindViewHolder(final ClienteViewHolder viewHolder, int i) {
+    public void onBindViewHolder(final ClienteViewHolder viewHolder, final int i) {
         viewHolder.nombre_completo.setText(items.get(i).getNombre_completo());
         viewHolder.documento.setText(items.get(i).getDocumento());
         viewHolder.deuda.setText("Deuda: $" + items.get(i).getDeuda());
+        viewHolder.fab_edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(v.getContext(), "Editar " + items.get(i).getId(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+
 
     }
 
@@ -80,7 +89,7 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ClienteV
         public ItemClickListener listener;
         public com.software.shell.fab.FloatingActionButton fab_edit;
 
-        public ClienteViewHolder(View v, ItemClickListener listener) {
+        public ClienteViewHolder(View v, final ItemClickListener listener) {
             super(v);
             nombre_completo = (TextView) v.findViewById(R.id.nombre_completo);
             documento = (TextView) v.findViewById(R.id.documento);
@@ -88,13 +97,6 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ClienteV
             this.listener = listener;
             fab_edit = (com.software.shell.fab.FloatingActionButton) v.findViewById(R.id.fab_edit);
 
-            fab_edit.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(v.getContext(), "Insert " + getPosition(), Toast.LENGTH_SHORT).show();
-
-                }
-            });
 
             v.setOnClickListener(this);
         }
