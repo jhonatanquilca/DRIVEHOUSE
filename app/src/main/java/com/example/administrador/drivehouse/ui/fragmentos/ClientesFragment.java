@@ -16,8 +16,10 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.administrador.drivehouse.R;
 import com.example.administrador.drivehouse.models.Cliente;
 import com.example.administrador.drivehouse.ui.ClienteAdapter;
+import com.example.administrador.drivehouse.ui.ScrollListener;
 import com.example.administrador.drivehouse.web.VolleySingleton;
 import com.google.gson.Gson;
+import com.software.shell.fab.ActionButton;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -74,20 +76,37 @@ public class ClientesFragment extends Fragment {
 //        usar un administrador para un linear layout
         lManager = new LinearLayoutManager(getActivity());
         lista.setLayoutManager(lManager);
+        fab = (com.software.shell.fab.FloatingActionButton) v.findViewById(R.id.fab);
 
         cargarAdaptador();
 
-        fab = (com.software.shell.fab.FloatingActionButton) v.findViewById(R.id.fab);
+        lista.setOnScrollListener(new ScrollListener() {
+
+            @Override
+            public void onHide() {
+                fab.setHideAnimation(ActionButton.Animations.SCALE_DOWN);
+
+                fab.playHideAnimation();
+                fab.hide();
+            }
+
+            @Override
+            public void onShow() {
+                fab.setHideAnimation(ActionButton.Animations.SCALE_UP);
+
+                fab.show();
+                fab.playShowAnimation();
+            }
+        });
 //        Asignar escucha al FAB
         fab.setOnClickListener(new View.OnClickListener() {
                                    @Override
                                    public void onClick(View v) {
                                        Toast.makeText(v.getContext(), "Insert", Toast.LENGTH_SHORT).show();
+                                       fab.setHideAnimation(ActionButton.Animations.FADE_OUT);
                                        fab.playHideAnimation();
 
-                                       // Iniciar actividad de inserción
-//                                       getActivity().startActivityForResult(
-//                                               new Intent(getActivity(), InsertActivity.class), 3);
+
                                    }
                                }
         );

@@ -20,6 +20,9 @@ import java.util.List;
  */
 public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ClienteViewHolder>
         implements ItemClickListener {
+    //added view types
+    private static final int TYPE_HEADER = 2;
+    private static final int TYPE_ITEM = 1;
     /**
      * Lista de objetos Meta que representan la fuente de datos
      * de inflado
@@ -41,6 +44,7 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ClienteV
     public int getItemCount() {
         return items.size();
     }
+
 
     @Override
     public ClienteViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {

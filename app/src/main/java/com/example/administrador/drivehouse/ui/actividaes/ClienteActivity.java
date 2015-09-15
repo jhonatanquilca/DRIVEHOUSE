@@ -17,15 +17,16 @@ public class ClienteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cliente);
 //        Toast.makeText(
 //                getApplicationContext(),
-//                "Inicion",
+//                "Inicion" + savedInstanceState,
 //                Toast.LENGTH_LONG).show();
 //        inicializacion del fregmento principal
-//        if (savedInstanceState == null) {
+        if (savedInstanceState == null) {
+
 
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.contenedor_cliente, new ClientesFragment(), "ClientesFragment").commit();
 
-//        }
+        }
     }
 
     @Override
