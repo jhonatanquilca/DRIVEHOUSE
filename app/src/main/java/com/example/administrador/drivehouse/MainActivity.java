@@ -14,6 +14,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.administrador.drivehouse.tools.Constantes;
 import com.example.administrador.drivehouse.ui.actividaes.ClienteActivity;
 import com.example.administrador.drivehouse.web.VolleySingleton;
 
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
                 VolleySingleton.getInstance(getApplicationContext()).addToRequestQueue(
                         new JsonObjectRequest(
                                 Request.Method.GET,
-                                "http://192.168.1.61/driveworkhouse/cliente/clienteWs/view/id/13",
+                                Constantes.VIEW,
                                 (String) null,
                                 new Response.Listener<JSONObject>() {
 

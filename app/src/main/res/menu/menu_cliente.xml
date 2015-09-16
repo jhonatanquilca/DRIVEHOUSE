@@ -10,10 +10,12 @@
 
     <item
         android:id="@+id/buscar"
+        android:actionViewClass="android.widget.SearchView"
         android:icon="@mipmap/ic_action_white_search"
         android:orderInCategory="2"
         android:title="@string/search"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="collapseActionView|ifRoom"
+        />
 
 
 </menu>

@@ -15,6 +15,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.administrador.drivehouse.R;
 import com.example.administrador.drivehouse.models.Cliente;
+import com.example.administrador.drivehouse.tools.Constantes;
 import com.example.administrador.drivehouse.ui.ClienteAdapter;
 import com.example.administrador.drivehouse.ui.ScrollListener;
 import com.example.administrador.drivehouse.web.VolleySingleton;
@@ -124,7 +125,7 @@ public class ClientesFragment extends Fragment {
         VolleySingleton.getInstance(getActivity()).addToRequestQueue(
                 new JsonObjectRequest(
                         Request.Method.GET,
-                        "http://192.168.1.61/driveworkhouse/cliente/clienteWs/admin",
+                        Constantes.ADMIN,
                         (String) null,
                         new Response.Listener<JSONObject>() {
 
