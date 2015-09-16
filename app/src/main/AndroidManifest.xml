@@ -31,7 +31,8 @@
         <!--actividad para clientes-->
         <activity
             android:name=".ui.actividaes.ClienteActivity"
-            android:label="@string/title_activity_cliente" android:theme="@style/AppTheme.Cliente"></activity>
+            android:label="@string/title_activity_cliente"
+            android:theme="@style/AppTheme.Cliente"></activity>
     </application>
 
 </manifest>
