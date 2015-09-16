@@ -27,7 +27,7 @@ public class Constantes {
     /**
      * URLs del Web Service
      */
-    public static final String ADMIN = IP + PUERTO_HOST + "/webservicewish/obtener_metas.php";
+    public static final String ADMIN = IP + PUERTO_HOST + "/driveworkhouse/cliente/clienteWs/admin";
     public static final String VIEW = IP + PUERTO_HOST + "/driveworkhouse/cliente/clienteWs/view/id/13";
     public static final String UPDATE = IP + PUERTO_HOST + "/webservicewish/update_meta.php";
     public static final String DELETE = IP + PUERTO_HOST + "/webservicewish/delete_meta.php";

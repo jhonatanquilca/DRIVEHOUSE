@@ -133,7 +133,6 @@ public class ClientesFragment extends Fragment {
                             public void onResponse(JSONObject response) {
                                 // Procesar respuesta Json
 //                                        procesarRespuesta(response);
-                                // Procesar la respuesta Json
                                 procesarRespuesta(response);
 
                             }
