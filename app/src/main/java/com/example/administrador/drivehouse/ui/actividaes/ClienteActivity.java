@@ -1,15 +1,12 @@
 package com.example.administrador.drivehouse.ui.actividaes;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -24,7 +21,8 @@ import com.example.administrador.drivehouse.web.VolleySingleton;
 import org.json.JSONObject;
 
 public class ClienteActivity extends AppCompatActivity {
-
+    ClientesFragment cf = new ClientesFragment();
+    SearchView campoBusqueda;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +39,7 @@ public class ClienteActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
 
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.contenedor_cliente, new ClientesFragment(), "ClientesFragment").commit();
+                    .add(R.id.contenedor_cliente, cf, "ClientesFragment").commit();
 
         }
         getSupportActionBar().setHomeAsUpIndicator(R.mipmap.ic_action_white_arrow_back);
@@ -54,18 +52,17 @@ public class ClienteActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_cliente, menu);
 
         MenuItem searchItem = menu.findItem(R.id.buscar);
-        SearchView campoBusqueda = (SearchView) MenuItemCompat.getActionView(searchItem);
+        campoBusqueda = (SearchView) MenuItemCompat.getActionView(searchItem);
         campoBusqueda.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
                 if (!s.isEmpty()) {
                     cargarBusquedaAdaptador(s);
-                }
-//                else {
+                } else {
 //                    Toast.makeText(getApplicationContext(), "Nada que buscar..." + s, Toast.LENGTH_SHORT).show();
+//                    cf.cargarAdaptador();
 
-//                }
-
+                }
                 return false;
             }
 
@@ -73,14 +70,11 @@ public class ClienteActivity extends AppCompatActivity {
             public boolean onQueryTextChange(String s) {
                 if (!s.isEmpty()) {
                     cargarBusquedaAdaptador(s);
-
-                }
-//                else {
+                } else {
+//                    cf.cargarAdaptador();
 
 //                    Toast.makeText(getApplicationContext(), "Nada que buscar..." + s, Toast.LENGTH_SHORT).show();
-//                }
-
-
+                }
                 return false;
             }
         });
@@ -88,6 +82,7 @@ public class ClienteActivity extends AppCompatActivity {
 
         return true;
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -125,9 +120,7 @@ public class ClienteActivity extends AppCompatActivity {
                             public void onResponse(JSONObject response) {
                                 // Procesar respuesta Json
 //                                        procesarRespuesta(response);
-                                Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_LONG).show();
-
-//                                procesarRespuesta(response);
+                                cf.actualizarRespuesta(response);
 
                             }
                         },

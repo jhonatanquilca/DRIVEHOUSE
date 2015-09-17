@@ -116,7 +116,7 @@ public class ClientesFragment extends Fragment {
         return v;
     }
 
-    private void cargarAdaptador() {
+    public void cargarAdaptador() {
 //        Toast.makeText(
 //                getActivity(),
 //                "Carga",
@@ -155,6 +155,46 @@ public class ClientesFragment extends Fragment {
      * @param response Objeto Json con la respuesta
      */
     private void procesarRespuesta(JSONObject response) {
+        try {
+
+            //obtener la psocion success del json
+            Boolean success = Boolean.valueOf(response.getString("success"));
+
+            if (success) {
+                JSONArray mensaje = response.getJSONArray("data");
+                // Parsear con Gson
+                Cliente[] clientes = gson.fromJson(mensaje.toString(), Cliente[].class);
+                // Inicializar adaptador
+                adapter = new ClienteAdapter(Arrays.asList(clientes), getActivity());
+                // Setear adaptador a la lista
+                lista.setAdapter(adapter);
+//                Toast.makeText(
+//                        getActivity(),
+//                        "Datos",
+//                        Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(
+                        getActivity(),
+                        "No Hay Datos",
+                        Toast.LENGTH_LONG).show();
+            }
+        } catch (JSONException e) {
+            Toast.makeText(
+                    getActivity(),
+                    "Error de Codificacion",
+                    Toast.LENGTH_LONG).show();
+        }
+
+    }
+
+    /**
+     * Interpreta los resultados de la respuesta y así
+     * realizar las operaciones correspondientes
+     *
+     * @param response Objeto Json con la respuesta
+     */
+    public void actualizarRespuesta(JSONObject response) {
+
         try {
 
             //obtener la psocion success del json
