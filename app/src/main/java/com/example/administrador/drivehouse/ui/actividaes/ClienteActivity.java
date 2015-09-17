@@ -60,7 +60,7 @@ public class ClienteActivity extends AppCompatActivity {
                     cargarBusquedaAdaptador(s);
                 } else {
 //                    Toast.makeText(getApplicationContext(), "Nada que buscar..." + s, Toast.LENGTH_SHORT).show();
-//                    cf.cargarAdaptador();
+                    cf.cargarAdaptador();
 
                 }
                 return false;
@@ -71,7 +71,7 @@ public class ClienteActivity extends AppCompatActivity {
                 if (!s.isEmpty()) {
                     cargarBusquedaAdaptador(s);
                 } else {
-//                    cf.cargarAdaptador();
+                    cf.cargarAdaptador();
 
 //                    Toast.makeText(getApplicationContext(), "Nada que buscar..." + s, Toast.LENGTH_SHORT).show();
                 }
