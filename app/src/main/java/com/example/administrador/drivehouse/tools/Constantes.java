@@ -23,11 +23,12 @@ public class Constantes {
     /**
      * Dirección IP de genymotion o AVD
      */
-    private static final String IP = "http://192.168.42.173:";
+    private static final String IP = "http://192.168.1.61:";
     /**
      * URLs del Web Service
      */
     public static final String ADMIN = IP + PUERTO_HOST + "/driveworkhouse/cliente/clienteWs/admin";
+    public static final String SEARCH = IP + PUERTO_HOST + "/driveworkhouse/cliente/clienteWs/search/param/";
     public static final String VIEW = IP + PUERTO_HOST + "/driveworkhouse/cliente/clienteWs/view/id/13";
     public static final String UPDATE = IP + PUERTO_HOST + "/webservicewish/update_meta.php";
     public static final String DELETE = IP + PUERTO_HOST + "/webservicewish/delete_meta.php";

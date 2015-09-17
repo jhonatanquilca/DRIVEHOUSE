@@ -1,15 +1,27 @@
 package com.example.administrador.drivehouse.ui.actividaes;
 
+import android.content.Context;
 import android.content.Intent;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
-import com.example.administrador.drivehouse.MainActivity;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.administrador.drivehouse.R;
+import com.example.administrador.drivehouse.tools.Constantes;
 import com.example.administrador.drivehouse.ui.fragmentos.ClientesFragment;
+import com.example.administrador.drivehouse.web.VolleySingleton;
+
+import org.json.JSONObject;
 
 public class ClienteActivity extends AppCompatActivity {
 
@@ -40,6 +52,40 @@ public class ClienteActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_cliente, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.buscar);
+        SearchView campoBusqueda = (SearchView) MenuItemCompat.getActionView(searchItem);
+        campoBusqueda.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                if (!s.isEmpty()) {
+                    cargarBusquedaAdaptador(s);
+                }
+//                else {
+//                    Toast.makeText(getApplicationContext(), "Nada que buscar..." + s, Toast.LENGTH_SHORT).show();
+
+//                }
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                if (!s.isEmpty()) {
+                    cargarBusquedaAdaptador(s);
+
+                }
+//                else {
+
+//                    Toast.makeText(getApplicationContext(), "Nada que buscar..." + s, Toast.LENGTH_SHORT).show();
+//                }
+
+
+                return false;
+            }
+        });
+
+
         return true;
     }
 
@@ -54,7 +100,7 @@ public class ClienteActivity extends AppCompatActivity {
             case R.id.action_settings:
                 return true;
             case R.id.buscar:
-                Toast.makeText(getApplicationContext(), "buscar", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), "buscar", Toast.LENGTH_SHORT).show();
                 return true;
             case android.R.id.home:
                 finish();
@@ -64,5 +110,35 @@ public class ClienteActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void cargarBusquedaAdaptador(String parametro) {
+        String url = Constantes.SEARCH + parametro;
+        VolleySingleton.getInstance(getApplicationContext()).addToRequestQueue(
+                new JsonObjectRequest(
+                        Request.Method.GET,
+                        url,
+                        (String) null,
+                        new Response.Listener<JSONObject>() {
+
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                // Procesar respuesta Json
+//                                        procesarRespuesta(response);
+                                Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_LONG).show();
+
+//                                procesarRespuesta(response);
+
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Toast.makeText(getApplicationContext(), "Error Volley: " + error.getMessage(), Toast.LENGTH_LONG).show();
+//                                        Log.d(TAG, "Error Volley: " + error.getMessage());
+                            }
+                        }
+                )
+        );
     }
 }
