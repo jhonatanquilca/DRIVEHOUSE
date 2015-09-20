@@ -2,6 +2,7 @@ package com.example.administrador.drivehouse.ui.fragmentos;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -37,6 +38,10 @@ public class ClientesFragment extends Fragment {
         Adaptador del recycler view
          */
     private ClienteAdapter adapter;
+
+    SwipeRefreshLayout refreshLayout;
+    boolean refreshLayoutValidator = true;
+
 
     /*
     Instancia global del recycler view
@@ -81,6 +86,7 @@ public class ClientesFragment extends Fragment {
 
         cargarAdaptador();
 
+
         lista.setOnScrollListener(new ScrollListener() {
 
             @Override
@@ -113,6 +119,30 @@ public class ClientesFragment extends Fragment {
         );
 
         fab.playShowAnimation();   // plays the show animation
+
+        // Obtener el refreshLayout funcionalidad para weiperefresh
+        refreshLayout = (SwipeRefreshLayout) v.findViewById(R.id.refresh);
+
+        // Iniciar la tarea asíncrona al revelar el indicador
+        refreshLayout.setOnRefreshListener(
+                new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+//                        Toast.makeText(getActivity(),"Mi swipe refresh",Toast.LENGTH_SHORT).show();
+                        cargarAdaptador();
+                    }
+                }
+        );
+
+        // Seteamos los colores que se usarán a lo largo de la animación
+        refreshLayout.setColorSchemeResources(
+                R.color.danger,
+                R.color.warning,
+                R.color.info,
+                R.color.success
+        );
+
+
         return v;
     }
 
@@ -132,7 +162,7 @@ public class ClientesFragment extends Fragment {
                             @Override
                             public void onResponse(JSONObject response) {
                                 // Procesar respuesta Json
-//                                        procesarRespuesta(response);
+
                                 procesarRespuesta(response);
 
                             }
@@ -168,6 +198,8 @@ public class ClientesFragment extends Fragment {
                 adapter = new ClienteAdapter(Arrays.asList(clientes), getActivity());
                 // Setear adaptador a la lista
                 lista.setAdapter(adapter);
+
+                refreshLayout.setRefreshing(false);
 //                Toast.makeText(
 //                        getActivity(),
 //                        "Datos",
@@ -175,7 +207,7 @@ public class ClientesFragment extends Fragment {
             } else {
                 Toast.makeText(
                         getActivity(),
-                        "No Hay Datos",
+                        "No Hay Mas Datos",
                         Toast.LENGTH_LONG).show();
             }
         } catch (JSONException e) {

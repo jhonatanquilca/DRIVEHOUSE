@@ -2,6 +2,7 @@ package com.example.administrador.drivehouse.ui.actividaes;
 
 import android.content.Intent;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.os.Bundle;
@@ -23,6 +24,7 @@ import org.json.JSONObject;
 public class ClienteActivity extends AppCompatActivity {
     ClientesFragment cf = new ClientesFragment();
     SearchView campoBusqueda;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +46,8 @@ public class ClienteActivity extends AppCompatActivity {
         }
         getSupportActionBar().setHomeAsUpIndicator(R.mipmap.ic_action_white_arrow_back);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
     }
 
     @Override

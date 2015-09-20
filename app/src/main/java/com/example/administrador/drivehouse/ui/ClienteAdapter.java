@@ -23,6 +23,8 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ClienteV
     //added view types
     private static final int TYPE_HEADER = 2;
     private static final int TYPE_ITEM = 1;
+
+
     /**
      * Lista de objetos Meta que representan la fuente de datos
      * de inflado
@@ -39,6 +41,27 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ClienteV
         this.context = context;
         this.items = items;
     }
+
+    public List<Cliente> getItems() {
+        return items;
+    }
+
+    /*
+  Añade una lista completa de items  funicionalidad para swiperefresh
+   */
+    public void addAll(List<Cliente> lista) {
+        items.addAll(lista);
+        notifyDataSetChanged();
+    }
+
+    /*
+  Permite limpiar todos los elementos del recycler funcionalidad pra swiperefresh
+   */
+    public void clear() {
+        items.clear();
+        notifyDataSetChanged();
+    }
+
 
     @Override
     public int getItemCount() {
@@ -65,7 +88,6 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ClienteV
 
             }
         });
-
 
 
     }

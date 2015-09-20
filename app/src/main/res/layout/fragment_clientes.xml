@@ -4,25 +4,36 @@
     android:id="@+id/fragmento_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:orientation="vertical">
 
-    >
+    <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/reciclador"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="3dp"
-        android:scrollbars="vertical" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/reciclador"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="3dp"
+            android:scrollbars="vertical" />
+
+
+    </android.support.v4.widget.SwipeRefreshLayout>
 
     <com.software.shell.fab.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="bottom|center"
         fab:button_color="@color/success_light"
         fab:button_colorPressed="@color/success"
         fab:button_colorRipple="@color/success_dark"
+        fab:hide_animation="@anim/fab_scale_down"
         fab:image="@mipmap/ic_action_white_userplus"
         fab:image_size="24dp"
         fab:shadowResponsiveEffect_enabled="true"
@@ -31,9 +42,6 @@
         fab:shadow_xOffset="1dp"
         fab:shadow_yOffset="1.50dp"
         fab:show_animation="@anim/fab_scale_up"
-        fab:hide_animation="@anim/fab_scale_down"
-        fab:type="DEFAULT"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        fab:type="DEFAULT" />
 
 </RelativeLayout>
