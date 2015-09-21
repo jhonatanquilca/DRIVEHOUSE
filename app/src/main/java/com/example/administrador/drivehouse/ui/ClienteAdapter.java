@@ -11,18 +11,16 @@ import android.widget.Toast;
 
 import com.example.administrador.drivehouse.R;
 import com.example.administrador.drivehouse.models.Cliente;
+import com.example.administrador.drivehouse.ui.actividaes.DetailActivity;
 
 import java.util.List;
 
 
 /**
- * Created by Administrador on 12/09/2015.
+ * Created by Jhonatan Quilca
  */
 public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ClienteViewHolder>
         implements ItemClickListener {
-    //added view types
-    private static final int TYPE_HEADER = 2;
-    private static final int TYPE_ITEM = 1;
 
 
     /**
@@ -44,22 +42,6 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ClienteV
 
     public List<Cliente> getItems() {
         return items;
-    }
-
-    /*
-  Añade una lista completa de items  funicionalidad para swiperefresh
-   */
-    public void addAll(List<Cliente> lista) {
-        items.addAll(lista);
-        notifyDataSetChanged();
-    }
-
-    /*
-  Permite limpiar todos los elementos del recycler funcionalidad pra swiperefresh
-   */
-    public void clear() {
-        items.clear();
-        notifyDataSetChanged();
     }
 
 
@@ -100,9 +82,8 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ClienteV
      */
     @Override
     public void onItemClick(View view, int position) {
-        Toast.makeText((Activity) context, items.get(position).getId(), Toast.LENGTH_SHORT).show();
-//        DetailActivity.launch(
-//                (Activity) context, items.get(position).getIdMeta());
+//        Toast.makeText((Activity) context, items.get(position).getId(), Toast.LENGTH_SHORT).show();
+        DetailActivity.launch((Activity) context, items.get(position).getId());
     }
 
 

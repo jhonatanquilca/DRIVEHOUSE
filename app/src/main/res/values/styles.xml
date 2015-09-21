@@ -7,11 +7,34 @@
 
     <style name="AppTheme" parent="AppTheme.Base" />
 
-    <style name="AppTheme.Cliente" >
+    <!--tema para admin de cliente-->
+    <style name="AppTheme.Cliente">
         <item name="colorPrimary">@color/success_dark</item>
+    </style>
+    <!--tema para view de cliente-->
+    <!--<style name="AppTheme.Detail">-->
+    <style name="AppTheme.Detail" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Habilitar la Toolbar -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
 
-
+        <!--Colores-->
+        <item name="colorPrimary">@color/success</item>
+        <item name="colorPrimaryDark">@color/primary</item>
+        <item name="colorAccent">@color/warning</item>
     </style>
 
+    <style name="CustomActionBar" >
+        <item name="android:windowActionBarOverlay">true</item>
+        <!-- Support library compatibility -->
+        <item name="windowActionBarOverlay">true</item>
+    </style>
 
+    <style name="Widget.CardContent" parent="android:Widget">
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:paddingTop">24dp</item>
+        <item name="android:paddingBottom">24dp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
 </resources>

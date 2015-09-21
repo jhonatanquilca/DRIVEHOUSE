@@ -44,8 +44,11 @@ public class ClienteActivity extends AppCompatActivity {
                     .add(R.id.contenedor_cliente, cf, "ClientesFragment").commit();
 
         }
-        getSupportActionBar().setHomeAsUpIndicator(R.mipmap.ic_action_white_arrow_back);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if (getSupportActionBar() != null) {
+
+            getSupportActionBar().setHomeAsUpIndicator(R.mipmap.ic_action_white_arrow_back);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
 
     }
@@ -67,7 +70,7 @@ public class ClienteActivity extends AppCompatActivity {
                     cf.cargarAdaptador();
 
                 }
-                return false;
+                return true;
             }
 
             @Override
