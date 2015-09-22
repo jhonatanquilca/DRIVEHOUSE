@@ -7,4 +7,12 @@
 
     <string name="search">Buscar</string>
     <string name="title_activity_detail">View</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_insert">InsertActivity</string>
+    <string name="title_activity_update">UpdateActivity</string>
+    <string name="label_nombre">Nombre</string>
+    <string name="label_apellido">Apellido</string>
+    <string name="label_docuemnto">Documento</string>
 </resources>
