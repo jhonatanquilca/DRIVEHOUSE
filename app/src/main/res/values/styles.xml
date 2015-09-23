@@ -24,7 +24,7 @@
         <item name="colorAccent">@color/warning</item>
     </style>
 
-    <style name="CustomActionBar" >
+    <style name="CustomActionBar">
         <item name="android:windowActionBarOverlay">true</item>
         <!-- Support library compatibility -->
         <item name="windowActionBarOverlay">true</item>
@@ -36,5 +36,45 @@
         <item name="android:paddingTop">24dp</item>
         <item name="android:paddingBottom">24dp</item>
         <item name="android:orientation">vertical</item>
+    </style>
+
+
+    <style name="cardView_title">
+        <item name="android:paddingLeft">14dp</item>
+        <item name="android:paddingRight">4dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">2dp</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:background">@color/gray_dark</item>
+    </style>
+
+    <style name="cardView_text_midel">
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">4dp</item>
+        <item name="android:paddingTop">2dp</item>
+        <item name="android:paddingBottom">2dp</item>
+        <item name="android:textSize">15dp</item>
+    </style>
+
+    <style name="cardView_text_final">
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">4dp</item>
+        <item name="android:paddingTop">2dp</item>
+        <item name="android:paddingBottom">2dp</item>
+        <item name="android:textSize">15dp</item>
+
+    </style>
+
+    <style name="cardView_subtext_midel">
+        <item name="android:paddingLeft">25dp</item>
+        <item name="android:textSize">14dp</item>
+
+    </style>
+
+    <style name="cardView_subtext_final">
+        <item name="android:paddingLeft">25dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:textSize">14dp</item>
+
     </style>
 </resources>

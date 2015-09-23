@@ -1,6 +1,7 @@
 package com.example.administrador.drivehouse.ui.fragmentos;
 
 
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
@@ -181,6 +182,7 @@ public class DetailFragment extends Fragment {
 
                 // Seteando valores en los views
                 collapser.setTitle(cl.getNombre_completo());
+
                 nombre.setText(cl.getNombre());
                 apellido.setText(cl.getApellido());
                 documento.setText(cl.getDocumento());
