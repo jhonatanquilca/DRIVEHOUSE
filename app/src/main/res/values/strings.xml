@@ -15,4 +15,9 @@
     <string name="label_nombre">Nombre</string>
     <string name="label_apellido">Apellido</string>
     <string name="label_docuemnto">Documento</string>
+    <string name="label_telefono">Teléfono</string>
+    <string name="label_celular">Celular</string>
+    <string name="label_email">E-mail</string>
+    <string name="label_usuario_creacion">Creador</string>
+    <string name="label_fecha_creacion">Fecha Creación</string>
 </resources>

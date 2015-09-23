@@ -1,6 +1,7 @@
 package com.example.administrador.drivehouse.ui.actividaes;
 
 import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -29,6 +30,8 @@ public class DetailActivity extends AppCompatActivity {
     public static void launch(Activity activity, String idCliente) {
         Intent intent = getLaunchIntent(activity, idCliente);
         activity.startActivityForResult(intent, Constantes.CODIGO_DETALLE);
+//        activity.startActivityForResult(intent, Constantes.CODIGO_DETALLE, ActivityOptions.makeSceneTransitionAnimation(activity).toBundle());
+//        activity.finishAfterTransition();
     }
 
 
@@ -51,7 +54,6 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cliente);
-
 
 
         // Retener instancia

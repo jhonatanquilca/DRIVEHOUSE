@@ -51,6 +51,11 @@ public class DetailFragment extends Fragment {
     private TextView nombre;
     private TextView apellido;
     private TextView documento;
+    private TextView telefono;
+    private TextView celular;
+    private TextView email;
+    private TextView usuario_creacion;
+    private TextView fecha_creacion;
     private com.software.shell.fab.FloatingActionButton editButton;
 
     private String extra;
@@ -66,6 +71,11 @@ public class DetailFragment extends Fragment {
         bundle.putString(EXTRA_ID, idCliente);
         detailFragment.setArguments(bundle);
         return detailFragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
     }
 
     @Override
@@ -88,6 +98,12 @@ public class DetailFragment extends Fragment {
         nombre = (TextView) v.findViewById(R.id.nombre);
         apellido = (TextView) v.findViewById(R.id.apellido);
         documento = (TextView) v.findViewById(R.id.documento);
+        telefono = (TextView) v.findViewById(R.id.telefono);
+        celular = (TextView) v.findViewById(R.id.celular);
+        email = (TextView) v.findViewById(R.id.email);
+        usuario_creacion = (TextView) v.findViewById(R.id.usuario_creacion);
+        fecha_creacion = (TextView) v.findViewById(R.id.fecha_creacion);
+        //boton para ir a la activiadad de edicion
         editButton = (com.software.shell.fab.FloatingActionButton) v.findViewById(R.id.fab);
 
 //        collapser.setOnScrollChangeListener(new CollapsingToolbarLayout.OnScrollChangeListener(){
@@ -186,6 +202,11 @@ public class DetailFragment extends Fragment {
                 nombre.setText(cl.getNombre());
                 apellido.setText(cl.getApellido());
                 documento.setText(cl.getDocumento());
+                telefono.setText(cl.getTelefono());
+                celular.setText(cl.getCelular());
+                email.setText((cl.getEmail_1().equals("")) ? cl.getEmail_1() : cl.getEmail_2());
+                usuario_creacion.setText(cl.getUsuario_creacion_id());
+                fecha_creacion.setText(cl.getFecha_creacion());
             } else {
                 Toast.makeText(
                         getActivity(),
