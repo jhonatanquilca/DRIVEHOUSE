@@ -98,6 +98,7 @@ public class DetailActivity extends AppCompatActivity {
                 DetailFragment fragment = (DetailFragment) getSupportFragmentManager().
                         findFragmentByTag("DetailFragment");
                 fragment.cargarDatos();
+//                Toast.makeText(getApplicationContext()," hola ",Toast.LENGTH_SHORT).show();
 
                 setResult(RESULT_OK); // Propagar código para actualizar
             } else if (resultCode == 203) {

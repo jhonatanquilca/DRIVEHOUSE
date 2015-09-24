@@ -29,41 +29,41 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        botonPrueba = (ImageButton) findViewById(R.id.imageButton);
-        campoTexto = (EditText) findViewById(R.id.editText);
+        setContentView(R.layout.fragment_form);
+//        botonPrueba = (ImageButton) findViewById(R.id.imageButton);
+//        campoTexto = (EditText) findViewById(R.id.editText);
 
-        botonPrueba.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Realizar petición GET_BY_ID
-                VolleySingleton.getInstance(getApplicationContext()).addToRequestQueue(
-                        new JsonObjectRequest(
-                                Request.Method.GET,
-                                Constantes.VIEW,
-                                (String) null,
-                                new Response.Listener<JSONObject>() {
-
-                                    @Override
-                                    public void onResponse(JSONObject response) {
-                                        // Procesar respuesta Json
-//                                        procesarRespuesta(response);
-                                        campoTexto.setText(response.toString());
-
-                                    }
-                                },
-                                new Response.ErrorListener() {
-                                    @Override
-                                    public void onErrorResponse(VolleyError error) {
-                                        Toast.makeText(getApplicationContext(),"Error Volley: " + error.getMessage(),Toast.LENGTH_LONG).show();
-//                                        Log.d(TAG, "Error Volley: " + error.getMessage());
-                                    }
-                                }
-                        )
-                );
-
-            }
-        });
+//        botonPrueba.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Realizar petición GET_BY_ID
+//                VolleySingleton.getInstance(getApplicationContext()).addToRequestQueue(
+//                        new JsonObjectRequest(
+//                                Request.Method.GET,
+//                                Constantes.VIEW,
+//                                (String) null,
+//                                new Response.Listener<JSONObject>() {
+//
+//                                    @Override
+//                                    public void onResponse(JSONObject response) {
+//                                        // Procesar respuesta Json
+////                                        procesarRespuesta(response);
+//                                        campoTexto.setText(response.toString());
+//
+//                                    }
+//                                },
+//                                new Response.ErrorListener() {
+//                                    @Override
+//                                    public void onErrorResponse(VolleyError error) {
+//                                        Toast.makeText(getApplicationContext(),"Error Volley: " + error.getMessage(),Toast.LENGTH_LONG).show();
+////                                        Log.d(TAG, "Error Volley: " + error.getMessage());
+//                                    }
+//                                }
+//                        )
+//                );
+//
+//            }
+//        });
     }
 
 

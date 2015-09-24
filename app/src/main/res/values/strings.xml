@@ -20,4 +20,6 @@
     <string name="label_email">E-mail</string>
     <string name="label_usuario_creacion">Creador</string>
     <string name="label_fecha_creacion">Fecha Creación</string>
+    <string name="label_email_1">E-mail Principal</string>
+    <string name="label_emai_2">E-mail Secundario</string>
 </resources>
