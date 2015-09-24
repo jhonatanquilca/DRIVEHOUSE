@@ -74,11 +74,6 @@ public class DetailFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_detail, container, false);
@@ -204,7 +199,13 @@ public class DetailFragment extends Fragment {
                 documento.setText(cl.getDocumento());
                 telefono.setText(cl.getTelefono());
                 celular.setText(cl.getCelular());
-                email.setText((cl.getEmail_1().equals("")) ? cl.getEmail_1() : cl.getEmail_2());
+                String emailStr = cl.getEmail_1() + "";
+                if (!emailStr.equals("")) {
+                    emailStr = cl.getEmail_1();
+                } else {
+                    emailStr = cl.getEmail_2();
+                }
+                email.setText(emailStr);
                 usuario_creacion.setText(cl.getUsuario_creacion_id());
                 fecha_creacion.setText(cl.getFecha_creacion());
             } else {

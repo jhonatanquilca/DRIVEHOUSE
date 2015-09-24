@@ -29,9 +29,10 @@ public class DetailActivity extends AppCompatActivity {
      */
     public static void launch(Activity activity, String idCliente) {
         Intent intent = getLaunchIntent(activity, idCliente);
+
+
         activity.startActivityForResult(intent, Constantes.CODIGO_DETALLE);
-//        activity.startActivityForResult(intent, Constantes.CODIGO_DETALLE, ActivityOptions.makeSceneTransitionAnimation(activity).toBundle());
-//        activity.finishAfterTransition();
+        activity.overridePendingTransition(R.transition.zoom_back_in, R.transition.zoom_back_out);
     }
 
 
