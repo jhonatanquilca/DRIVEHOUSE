@@ -1,11 +1,14 @@
 package com.example.administrador.drivehouse.ui.actividaes;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.administrador.drivehouse.R;
+import com.example.administrador.drivehouse.ui.fragmentos.InsertFragment;
+
 
 public class InsertActivity extends AppCompatActivity {
 
@@ -13,6 +16,20 @@ public class InsertActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cliente);
+
+        Toast.makeText(getApplicationContext(),(getSupportActionBar() != null)+"",Toast.LENGTH_SHORT).show();
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setHomeAsUpIndicator(R.mipmap.ic_action_white_ok);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        }
+
+        // Creación del fragmento de inserción
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.contenedor_cliente, new InsertFragment(), "InsertFragment")
+                    .commit();
+        }
     }
 
     @Override

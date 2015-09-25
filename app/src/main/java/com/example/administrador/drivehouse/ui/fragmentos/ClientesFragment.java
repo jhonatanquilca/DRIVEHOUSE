@@ -1,5 +1,6 @@
 package com.example.administrador.drivehouse.ui.fragmentos;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -19,6 +20,7 @@ import com.example.administrador.drivehouse.models.Cliente;
 import com.example.administrador.drivehouse.tools.Constantes;
 import com.example.administrador.drivehouse.ui.ClienteAdapter;
 import com.example.administrador.drivehouse.ui.ScrollListener;
+import com.example.administrador.drivehouse.ui.actividaes.InsertActivity;
 import com.example.administrador.drivehouse.web.VolleySingleton;
 import com.google.gson.Gson;
 import com.software.shell.fab.ActionButton;
@@ -109,10 +111,10 @@ public class ClientesFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
                                    @Override
                                    public void onClick(View v) {
-                                       Toast.makeText(v.getContext(), "Insert", Toast.LENGTH_SHORT).show();
                                        fab.setHideAnimation(ActionButton.Animations.FADE_OUT);
                                        fab.playHideAnimation();
-
+                                       getActivity().startActivityForResult(
+                                               new Intent(getActivity(), InsertActivity.class), 3);
 
                                    }
                                }
