@@ -30,9 +30,9 @@ public class Constantes {
     public static final String ADMIN = IP + PUERTO_HOST + "/driveworkhouse/cliente/clienteWs/admin";
     public static final String SEARCH = IP + PUERTO_HOST + "/driveworkhouse/cliente/clienteWs/search/param/";
     public static final String VIEW = IP + PUERTO_HOST + "/driveworkhouse/cliente/clienteWs/view/id/";
-    public static final String UPDATE = IP + PUERTO_HOST + "/webservicewish/update_meta.php";
+    public static final String UPDATE = IP + PUERTO_HOST + "/driveworkhouse/cliente/clienteWs/update/";
     public static final String DELETE = IP + PUERTO_HOST + "/webservicewish/delete_meta.php";
-    public static final String INSERT = IP + PUERTO_HOST + "/webservicewish/insert_meta.php";
+    public static final String INSERT = IP + PUERTO_HOST + "/driveworkhouse/cliente/clienteWs/create";
 
     /**
      * Clave para el valor extra que representa al identificador de una meta

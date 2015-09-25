@@ -17,7 +17,7 @@ public class InsertActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cliente);
 
-        Toast.makeText(getApplicationContext(),(getSupportActionBar() != null)+"",Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(),(getSupportActionBar() != null)+"",Toast.LENGTH_SHORT).show();
         if (getSupportActionBar() != null) {
             getSupportActionBar().setHomeAsUpIndicator(R.mipmap.ic_action_white_ok);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
