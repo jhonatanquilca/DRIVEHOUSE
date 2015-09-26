@@ -1,6 +1,7 @@
 package com.example.administrador.drivehouse.ui.fragmentos;
 
 
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -21,6 +22,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.administrador.drivehouse.R;
 import com.example.administrador.drivehouse.models.Cliente;
 import com.example.administrador.drivehouse.tools.Constantes;
+import com.example.administrador.drivehouse.ui.actividaes.UpdateActivity;
 import com.example.administrador.drivehouse.web.VolleySingleton;
 import com.google.gson.Gson;
 
@@ -114,15 +116,15 @@ public class DetailFragment extends Fragment {
                     @Override
                     public void onClick(View v) {
                         // Iniciar actividad de actualización
-                        Toast.makeText(getActivity(), "Update ", Toast.LENGTH_SHORT).show();
-//                        Intent i = new Intent(getActivity(), UpdateActivity.class);
-////                        i.putExtra(EXTRA_ID, extra);
-//                        i.putExtra(Constantes.EXTRA_ID, extra);
-//                        getActivity().startActivityForResult(i, Constantes.CODIGO_ACTUALIZACION);
-
+//                        Toast.makeText(getActivity(), "Update ", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(getActivity(), UpdateActivity.class);
+//                        i.putExtra(EXTRA_ID, extra);
+                        i.putExtra(Constantes.EXTRA_ID, extra);
+                        getActivity().startActivityForResult(i, Constantes.CODIGO_ACTUALIZACION);
                     }
                 }
         );
+
 
         // Obtener extra del intent de envío
         extra = getArguments().getString(EXTRA_ID);

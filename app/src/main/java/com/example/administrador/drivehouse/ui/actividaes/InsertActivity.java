@@ -4,13 +4,19 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.example.administrador.drivehouse.R;
 import com.example.administrador.drivehouse.ui.fragmentos.InsertFragment;
 
 
 public class InsertActivity extends AppCompatActivity {
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        overridePendingTransition(R.transition.zoom_back_in, R.transition.zoom_back_out);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,9 +39,15 @@ public class InsertActivity extends AppCompatActivity {
     }
 
     @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.transition.zoom_back_in, R.transition.zoom_back_out);
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_insert, menu);
+        getMenuInflater().inflate(R.menu.menu_form, menu);
         return true;
     }
 

@@ -18,17 +18,14 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.administrador.drivehouse.R;
-import com.example.administrador.drivehouse.models.Cliente;
 import com.example.administrador.drivehouse.tools.Constantes;
-import com.example.administrador.drivehouse.ui.ClienteAdapter;
 import com.example.administrador.drivehouse.web.VolleySingleton;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 
@@ -68,6 +65,7 @@ public class InsertFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_form, container, false);
+
         input_nombre = (EditText) v.findViewById(R.id.input_nombre);
         input_apellido = (EditText) v.findViewById(R.id.input_apellido);
         input_docuemento = (EditText) v.findViewById(R.id.input_documento);
@@ -84,7 +82,7 @@ public class InsertFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
 //menu barra
-//        menu.removeItem(R.id.action_delete); // elimina la accion del menu oculto
+        menu.removeItem(R.id.action_delete); // elimina la accion del menu oculto
 
     }
 
@@ -94,6 +92,9 @@ public class InsertFragment extends Fragment {
         switch (id) {
             case android.R.id.home: // boton menu guardar (ok)
                 saveCliente();
+                return true;
+            case R.id.action_discart: // boton menu guardar (ok)
+                getActivity().finish();
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -126,22 +127,21 @@ public class InsertFragment extends Fragment {
 
         // Crear nuevo objeto Json basado en el mapa
         JSONObject jsonCliente = new JSONObject(map);
-        Toast.makeText(getContext(), "accion de guardado json " + jsonCliente.toString(), Toast.LENGTH_SHORT).show();
+
 
         // Depurando objeto Json...
-        Log.d(TAG, jsonCliente.toString());
-//TODO: hacerlo por post
+//        Log.d(TAG, jsonCliente.toString());
+
+
         // Actualizar datos en el servidor
         VolleySingleton.getInstance(getActivity()).addToRequestQueue(
                 new JsonObjectRequest(
-                        Request.Method.GET,
+                        Request.Method.POST,
                         Constantes.INSERT,
                         jsonCliente,
                         new Response.Listener<JSONObject>() {
                             @Override
                             public void onResponse(JSONObject response) {
-                                // Procesar la respuesta del servidor
-                                Toast.makeText(getContext(), "a " + response.toString(), Toast.LENGTH_SHORT).show();
 
                                 procesarRespuesta(response);
                             }
@@ -192,16 +192,66 @@ public class InsertFragment extends Fragment {
                 // Terminar actividad
                 getActivity().finish();
             } else {
-                Toast.makeText(
-                        getActivity(),
-                        "Errors: " + response.getString("errors"),
-                        Toast.LENGTH_LONG).show();
+                try {
+
+                    Map<String, String> maping = toMap(response.getJSONObject("errors"));
+
+                    for (String key : maping.keySet()) {
+//                        Toast.makeText(
+//                                getActivity(),
+//                                 key+"=>" + maping.get(key).replace("\"","").replace("[","").replace("]",""),
+//                                Toast.LENGTH_LONG).show();
+                        EditText campo = null;
+                        switch (key) {
+                            case "nombre":
+                                campo = (EditText) getView().findViewById(R.id.input_nombre);
+                                campo.setHint(maping.get(key).replace("\"", "").replace("[", "").replace("]", "").replace(".", ""));
+                                campo.setHintTextColor(getResources().getColor(R.color.danger));
+                                break;
+                            case "apellido":
+                                campo = (EditText) getView().findViewById(R.id.input_apellido);
+                                campo.setHint(maping.get(key).replace("\"", "").replace("[", "").replace("]", "").replace(".", ""));
+                                campo.setHintTextColor(getResources().getColor(R.color.danger));
+                                campo.setSingleLine();
+                                break;
+                            case "nombre_apellido":
+                                Toast.makeText(getContext(), maping.get(key).replace("\"", "").replace("[", "").replace("]", "").replace(".", ""), Toast.LENGTH_LONG).show();
+                                break;
+                        }
+
+                    }
+
+
+                } catch (JSONException e1) {
+                    Toast.makeText(
+                            getActivity(),
+                            "Erros: " + response.getString("errors"),
+                            Toast.LENGTH_LONG).show();
+                }
+
             }
-        } catch (JSONException e) {
+        } catch (
+                JSONException e
+                )
+
+        {
             Toast.makeText(
                     getActivity(),
-                    "Error de Codificacion",
+                    "Error de Codificacion " + e.getMessage(),
                     Toast.LENGTH_LONG).show();
         }
+
     }
+
+    public static Map<String, String> toMap(JSONObject object) throws JSONException {
+        Map<String, String> map = new HashMap();
+        Iterator keys = object.keys();
+        while (keys.hasNext()) {
+            String key = (String) keys.next();
+            map.put(key, object.getString(key));
+        }
+        return map;
+    }
+
+
 }

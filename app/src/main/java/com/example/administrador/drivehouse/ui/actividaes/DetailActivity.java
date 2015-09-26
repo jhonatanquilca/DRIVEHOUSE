@@ -70,6 +70,11 @@ public class DetailActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.transition.zoom_back_in, R.transition.zoom_back_out);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
