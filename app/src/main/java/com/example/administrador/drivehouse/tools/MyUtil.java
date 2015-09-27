@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * Created by Jhonatan Quilca
  */
-public class Util {
+public class MyUtil {
     public static Map<String, String> toMap(JSONObject object) throws JSONException {
         Map<String, String> map = new HashMap();
         Iterator keys = object.keys();

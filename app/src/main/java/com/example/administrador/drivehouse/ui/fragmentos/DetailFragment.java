@@ -187,7 +187,7 @@ public class DetailFragment extends Fragment {
 
             Boolean success = Boolean.valueOf(response.getString("success"));
             if (success) {
-                // Obtener objeto "meta"
+                // Obtener objeto "Cliente"
                 JSONObject object = response.getJSONObject("data");
 
                 //Parsear objeto

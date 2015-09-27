@@ -19,13 +19,13 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.administrador.drivehouse.R;
 import com.example.administrador.drivehouse.tools.Constantes;
+import com.example.administrador.drivehouse.tools.MyUtil;
 import com.example.administrador.drivehouse.web.VolleySingleton;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 
@@ -103,8 +103,8 @@ public class InsertFragment extends Fragment {
     /**
      * Guarda los cambios de un Cliente editada.
      * <p/>
-     * Si está en modo inserción, entonces crea una nueva
-     * meta en la base de datos
+     * Si está en modo inserción, entonces crea un nuevo
+     * Cliente en la base de datos
      */
     private void saveCliente() {
         final String nombre = input_nombre.getText().toString();
@@ -194,7 +194,7 @@ public class InsertFragment extends Fragment {
             } else {
                 try {
 
-                    Map<String, String> maping = toMap(response.getJSONObject("errors"));
+                    Map<String, String> maping = new MyUtil().toMap(response.getJSONObject("errors"));
 
                     for (String key : maping.keySet()) {
 //                        Toast.makeText(
@@ -215,6 +215,16 @@ public class InsertFragment extends Fragment {
                                 campo.setSingleLine();
                                 break;
                             case "nombre_apellido":
+                                Toast.makeText(getContext(), maping.get(key).replace("\"", "").replace("[", "").replace("]", "").replace(".", ""), Toast.LENGTH_LONG).show();
+                                break;
+                            case "email_1":
+                                campo = (EditText) getView().findViewById(R.id.input_email_1);
+                                campo.setTextColor(getResources().getColor(R.color.danger));
+                                Toast.makeText(getContext(), maping.get(key).replace("\"", "").replace("[", "").replace("]", "").replace(".", ""), Toast.LENGTH_LONG).show();
+                                break;
+                            case "email_2":
+                                campo = (EditText) getView().findViewById(R.id.input_email_2);
+                                campo.setTextColor(getResources().getColor(R.color.danger));
                                 Toast.makeText(getContext(), maping.get(key).replace("\"", "").replace("[", "").replace("]", "").replace(".", ""), Toast.LENGTH_LONG).show();
                                 break;
                         }
@@ -241,16 +251,6 @@ public class InsertFragment extends Fragment {
                     Toast.LENGTH_LONG).show();
         }
 
-    }
-
-    public static Map<String, String> toMap(JSONObject object) throws JSONException {
-        Map<String, String> map = new HashMap();
-        Iterator keys = object.keys();
-        while (keys.hasNext()) {
-            String key = (String) keys.next();
-            map.put(key, object.getString(key));
-        }
-        return map;
     }
 
 

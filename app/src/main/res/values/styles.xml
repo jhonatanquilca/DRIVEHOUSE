@@ -77,4 +77,10 @@
         <item name="android:textSize">14dp</item>
 
     </style>
+
+    <!-- Diálogos -->
+    <string name="dialog_ok">OK</string>
+    <string name="dialog_descartar_msg">¿Descartar Cambios?</string>
+    <string name="dialog_cancelar">Cancelar</string>
+    <string name="dialog_eliminar_msg">¿Está seguro de desea eliminar este registro?</string>
 </resources>

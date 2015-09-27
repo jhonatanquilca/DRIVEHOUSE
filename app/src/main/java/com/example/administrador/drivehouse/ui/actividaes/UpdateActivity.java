@@ -1,15 +1,22 @@
 package com.example.administrador.drivehouse.ui.actividaes;
 
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.administrador.drivehouse.R;
 import com.example.administrador.drivehouse.tools.Constantes;
+import com.example.administrador.drivehouse.ui.fragmentos.ConfirmDialogFragment;
 import com.example.administrador.drivehouse.ui.fragmentos.UpdateFragment;
 
-public class UpdateActivity extends AppCompatActivity {
+public class UpdateActivity extends AppCompatActivity implements ConfirmDialogFragment.ConfirmDialogListener {
+    /**
+     * Etiqueta del valor extra del dialogo
+     */
+    private static final String EXTRA_NOMBRE = "NOMBRE";
 
     @Override
     protected void onStart() {
@@ -70,5 +77,32 @@ public class UpdateActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onDialogPositiveClick(DialogFragment dialog) {
+        UpdateFragment fragment = (UpdateFragment)
+                getSupportFragmentManager().findFragmentByTag("UpdateFragment");
+        if (fragment != null) {
+            String extra = dialog.getArguments().getString(EXTRA_NOMBRE);
+            String msg = getResources().getString(R.string.dialog_eliminar_msg);
+            if (extra.compareTo(msg) == 0) {
+                fragment.eliminarCliente(); // Eliminar la tarea
+            } else {
+                finish();
+            }
+
+        }
+
+    }
+
+    @Override
+    public void onDialogNegativeClick(DialogFragment dialog) {
+        UpdateFragment fragment = (UpdateFragment)
+                getSupportFragmentManager().findFragmentByTag("UpdateFragment");
+        if (fragment != null) {
+            // Nada por el momento
+        }
+
     }
 }

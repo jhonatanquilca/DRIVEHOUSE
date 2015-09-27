@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
                 VolleySingleton.getInstance(getApplicationContext()).addToRequestQueue(
                         new JsonObjectRequest(
                                 Request.Method.GET,
-                                Constantes.VIEW,
+                                Constantes.ADMIN,
                                 (String) null,
                                 new Response.Listener<JSONObject>() {
 
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                                 new Response.ErrorListener() {
                                     @Override
                                     public void onErrorResponse(VolleyError error) {
-                                        Toast.makeText(getApplicationContext(),"Error Volley: " + error.getMessage(),Toast.LENGTH_LONG).show();
+                                        Toast.makeText(getApplicationContext(), "Error Volley: " + error.getMessage(), Toast.LENGTH_LONG).show();
 //                                        Log.d(TAG, "Error Volley: " + error.getMessage());
                                     }
                                 }
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_settings:
                 return true;
             case R.id.action_cliente:
-                Intent i=new Intent(this, ClienteActivity.class);
+                Intent i = new Intent(this, ClienteActivity.class);
                 startActivity(i);
                 break;
 

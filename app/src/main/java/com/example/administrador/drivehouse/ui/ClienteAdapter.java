@@ -2,6 +2,7 @@ package com.example.administrador.drivehouse.ui;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +12,9 @@ import android.widget.Toast;
 
 import com.example.administrador.drivehouse.R;
 import com.example.administrador.drivehouse.models.Cliente;
+import com.example.administrador.drivehouse.tools.Constantes;
 import com.example.administrador.drivehouse.ui.actividaes.DetailActivity;
+import com.example.administrador.drivehouse.ui.actividaes.UpdateActivity;
 
 import java.util.List;
 
@@ -24,7 +27,7 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ClienteV
 
 
     /**
-     * Lista de objetos Meta que representan la fuente de datos
+     * Lista de objetos Cliente que representan la fuente de datos
      * de inflado
      */
     private List<Cliente> items;
@@ -66,7 +69,13 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ClienteV
         viewHolder.fab_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(), "Editar " + items.get(i).getId(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(v.getContext(), "Editar " + items.get(i).getId(), Toast.LENGTH_SHORT).show();
+                Activity activity = (Activity) context;
+                String id = items.get(i).getId();
+                Intent i = new Intent(activity, UpdateActivity.class);
+//                        i.putExtra(EXTRA_ID, extra);
+                i.putExtra(Constantes.EXTRA_ID, id);
+                activity.startActivityForResult(i, Constantes.CODIGO_ACTUALIZACION);
 
             }
         });
