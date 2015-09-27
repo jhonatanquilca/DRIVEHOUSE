@@ -211,6 +211,7 @@ public class ClientesFragment extends Fragment {
                         getActivity(),
                         "No Hay Mas Datos",
                         Toast.LENGTH_LONG).show();
+
                 refreshLayout.setRefreshing(false);
 
             }
