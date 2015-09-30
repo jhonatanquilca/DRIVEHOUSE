@@ -4,6 +4,7 @@ package com.example.administrador.drivehouse.ui.fragmentos;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -59,6 +60,7 @@ public class DetailFragment extends Fragment {
     private TextView usuario_creacion;
     private TextView fecha_creacion;
     private com.software.shell.fab.FloatingActionButton editButton;
+    private AppBarLayout appBar;
 
     private String extra;
     private Gson gson = new Gson();
@@ -89,7 +91,7 @@ public class DetailFragment extends Fragment {
 
         }
 
-
+        appBar = (AppBarLayout) v.findViewById(R.id.app_bar);
         collapser = (CollapsingToolbarLayout) v.findViewById(R.id.collapser);
         // Obtención de views
         nombre = (TextView) v.findViewById(R.id.nombre);
@@ -102,12 +104,12 @@ public class DetailFragment extends Fragment {
         fecha_creacion = (TextView) v.findViewById(R.id.fecha_creacion);
         //boton para ir a la activiadad de edicion
         editButton = (com.software.shell.fab.FloatingActionButton) v.findViewById(R.id.fab);
-
-//        collapser.setOnScrollChangeListener(new CollapsingToolbarLayout.OnScrollChangeListener(){
-//
+        appBar.setVerticalScrollbarPosition(appBar.getVerticalScrollbarPosition()-20);
+//        appBar.setOnScrollChangeListener(new View.OnScrollChangeListener() {
 //            @Override
 //            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
 //
+//                Toast.makeText(getContext(), scrollX + " " + scrollY + " " + oldScrollX + " " + oldScrollY, Toast.LENGTH_SHORT).show();
 //            }
 //        });
         // Setear escucha para el fab

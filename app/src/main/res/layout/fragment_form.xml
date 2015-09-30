@@ -44,11 +44,11 @@
                         style="@style/cardView_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/gray_light"
+                        android:background="@color/grey_200"
                         android:paddingBottom="16dp"
                         android:text="Perfil"
                         android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                        android:textColor="@color/primary" />
+                        android:textColor="@color/blue_grey_600" />
                     <!--Capo para nombre-->
                     <EditText
                         android:id="@+id/input_nombre"
@@ -118,11 +118,11 @@
                         style="@style/cardView_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/gray_light"
+                        android:background="@color/grey_200"
                         android:paddingBottom="16dp"
                         android:text="Contacto"
                         android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                        android:textColor="@color/primary" />
+                        android:textColor="@color/blue_grey_600" />
                     <!--Campo para el Telefono-->
                     <EditText
                         android:id="@+id/input_telefono"

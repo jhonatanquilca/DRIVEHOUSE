@@ -2,14 +2,14 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">@color/primary_dark</item>
+        <item name="colorPrimary">@color/primary</item>
     </style>
 
     <style name="AppTheme" parent="AppTheme.Base" />
 
     <!--tema para admin de cliente-->
     <style name="AppTheme.Cliente">
-        <item name="colorPrimary">@color/success_dark</item>
+        <item name="colorPrimary">@color/green_500</item>
     </style>
     <!--tema para view de cliente-->
     <!--<style name="AppTheme.Detail">-->
@@ -19,9 +19,9 @@
         <item name="windowNoTitle">true</item>
 
         <!--Colores-->
-        <item name="colorPrimary">@color/success</item>
+        <item name="colorPrimary">@color/green_500</item>
         <item name="colorPrimaryDark">@color/primary</item>
-        <item name="colorAccent">@color/warning</item>
+        <item name="colorAccent">@color/orange_200</item>
     </style>
 
     <style name="CustomActionBar">
@@ -45,7 +45,7 @@
         <item name="android:paddingTop">10dp</item>
         <item name="android:paddingBottom">2dp</item>
         <item name="android:textSize">20dp</item>
-        <item name="android:background">@color/gray_dark</item>
+        <item name="android:background">@color/grey_300</item>
     </style>
 
     <style name="cardView_text_midel">

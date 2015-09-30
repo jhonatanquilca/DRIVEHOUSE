@@ -206,12 +206,12 @@ public class InsertFragment extends Fragment {
                             case "nombre":
                                 campo = (EditText) getView().findViewById(R.id.input_nombre);
                                 campo.setHint(maping.get(key).replace("\"", "").replace("[", "").replace("]", "").replace(".", ""));
-                                campo.setHintTextColor(getResources().getColor(R.color.danger));
+                                campo.setHintTextColor(getResources().getColor(R.color.red_300));
                                 break;
                             case "apellido":
                                 campo = (EditText) getView().findViewById(R.id.input_apellido);
                                 campo.setHint(maping.get(key).replace("\"", "").replace("[", "").replace("]", "").replace(".", ""));
-                                campo.setHintTextColor(getResources().getColor(R.color.danger));
+                                campo.setHintTextColor(getResources().getColor(R.color.red_300));
                                 campo.setSingleLine();
                                 break;
                             case "nombre_apellido":
@@ -219,12 +219,12 @@ public class InsertFragment extends Fragment {
                                 break;
                             case "email_1":
                                 campo = (EditText) getView().findViewById(R.id.input_email_1);
-                                campo.setTextColor(getResources().getColor(R.color.danger));
+                                campo.setTextColor(getResources().getColor(R.color.red_300));
                                 Toast.makeText(getContext(), maping.get(key).replace("\"", "").replace("[", "").replace("]", "").replace(".", ""), Toast.LENGTH_LONG).show();
                                 break;
                             case "email_2":
                                 campo = (EditText) getView().findViewById(R.id.input_email_2);
-                                campo.setTextColor(getResources().getColor(R.color.danger));
+                                campo.setTextColor(getResources().getColor(R.color.red_300));
                                 Toast.makeText(getContext(), maping.get(key).replace("\"", "").replace("[", "").replace("]", "").replace(".", ""), Toast.LENGTH_LONG).show();
                                 break;
                         }

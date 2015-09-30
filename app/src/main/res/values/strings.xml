@@ -22,4 +22,5 @@
     <string name="label_emai_2">E-mail Secundario</string>
     <string name="action_eliminar">Eliminar</string>
     <string name="action_descartar">Descartar</string>
+    <string name="label_error_de_coneccionn">Error de Conexión</string>
 </resources>

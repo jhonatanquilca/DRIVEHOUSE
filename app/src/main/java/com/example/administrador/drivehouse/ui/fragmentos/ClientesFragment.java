@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -63,6 +64,9 @@ public class ClientesFragment extends Fragment {
     //    instanacion para el json
     private Gson gson = new Gson();
 
+
+    LinearLayout emptyView;
+
     public ClientesFragment() {
         // Required empty public constructor
     }
@@ -77,6 +81,9 @@ public class ClientesFragment extends Fragment {
 //                Toast.LENGTH_LONG).show();
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_clientes, container, false);
+
+        emptyView = (LinearLayout) v.findViewById(R.id.empty_view);
+
 
         lista = (RecyclerView) v.findViewById(R.id.reciclador);
         lista.setHasFixedSize(true);
@@ -138,10 +145,10 @@ public class ClientesFragment extends Fragment {
 
         // Seteamos los colores que se usarán a lo largo de la animación
         refreshLayout.setColorSchemeResources(
-                R.color.danger,
-                R.color.warning,
-                R.color.info,
-                R.color.success
+                R.color.red_500,
+                R.color.orange_300,
+                R.color.blue_400,
+                R.color.green_500
         );
 
 
@@ -164,7 +171,8 @@ public class ClientesFragment extends Fragment {
                             @Override
                             public void onResponse(JSONObject response) {
                                 // Procesar respuesta Json
-
+                                lista.setVisibility(View.VISIBLE);
+                                emptyView.setVisibility(View.GONE);
                                 procesarRespuesta(response);
 
                             }
@@ -172,8 +180,12 @@ public class ClientesFragment extends Fragment {
                         new Response.ErrorListener() {
                             @Override
                             public void onErrorResponse(VolleyError error) {
-                                Toast.makeText(getActivity(), "Error Volley: " + error.getMessage(), Toast.LENGTH_LONG).show();
+//                                Toast.makeText(getActivity(), "Error Volley: " + error.getMessage(), Toast.LENGTH_LONG).show();
 //                                        Log.d(TAG, "Error Volley: " + error.getMessage());
+                                refreshLayout.setRefreshing(false);
+//                                lista.setBackgroundColor(getResources().getColor(R.color.warning));
+                                lista.setVisibility(View.GONE);
+                                emptyView.setVisibility(View.VISIBLE);
                             }
                         }
                 )
