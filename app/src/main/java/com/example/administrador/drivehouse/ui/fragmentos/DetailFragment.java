@@ -2,17 +2,20 @@ package com.example.administrador.drivehouse.ui.fragmentos;
 
 
 import android.content.Intent;
-import android.content.res.ColorStateList;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.graphics.Palette;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,7 +52,7 @@ public class DetailFragment extends Fragment {
     /*
    Instancias de Views
     */
-//    private ImageView cabecera;
+    private ImageView cabecera;
     private CollapsingToolbarLayout collapser;
     private TextView nombre;
     private TextView apellido;
@@ -104,14 +107,26 @@ public class DetailFragment extends Fragment {
         fecha_creacion = (TextView) v.findViewById(R.id.fecha_creacion);
         //boton para ir a la activiadad de edicion
         editButton = (com.software.shell.fab.FloatingActionButton) v.findViewById(R.id.fab);
-        appBar.setVerticalScrollbarPosition(appBar.getVerticalScrollbarPosition()-20);
-//        appBar.setOnScrollChangeListener(new View.OnScrollChangeListener() {
-//            @Override
-//            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-//
-//                Toast.makeText(getContext(), scrollX + " " + scrollY + " " + oldScrollX + " " + oldScrollY, Toast.LENGTH_SHORT).show();
-//            }
-//        });
+        cabecera = (ImageView) v.findViewById(R.id.image_paralax);
+
+        Toast.makeText(getContext(),"img:"+R.mipmap.header,Toast.LENGTH_SHORT).show();
+
+
+
+
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.mipmap.header);
+
+
+        Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
+            @SuppressWarnings("ResourceType")
+            @Override
+            public void onGenerated(Palette palette) {
+
+
+                collapser.setContentScrimColor(palette.getMutedColor(getResources().getColor(R.color.fab_material_indigo_500)));
+                collapser.setStatusBarScrimColor(R.color.black);
+            }
+        });
         // Setear escucha para el fab
         editButton.setOnClickListener(
                 new View.OnClickListener() {
