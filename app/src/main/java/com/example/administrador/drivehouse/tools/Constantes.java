@@ -17,7 +17,7 @@ public class Constantes {
     /**
      * variable de elecconde peticion http decide si se pa a poner en produccion o es un a prueba local
      */
-    private static final Boolean onLine = false;
+    private static final Boolean onLine = true;
     /**
      * Puerto que utilizas para la conexión.
      * Dejalo en blanco si no has configurado esta carácteristica.

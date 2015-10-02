@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.Toolbar;
@@ -64,6 +65,7 @@ public class DetailFragment extends Fragment {
     private TextView fecha_creacion;
     private com.software.shell.fab.FloatingActionButton editButton;
     private AppBarLayout appBar;
+    private NestedScrollView scroller;
 
     private String extra;
     private Gson gson = new Gson();
@@ -109,12 +111,10 @@ public class DetailFragment extends Fragment {
         editButton = (com.software.shell.fab.FloatingActionButton) v.findViewById(R.id.fab);
         cabecera = (ImageView) v.findViewById(R.id.image_paralax);
 
-        Toast.makeText(getContext(),"img:"+R.mipmap.header,Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "img:" + R.mipmap.header, Toast.LENGTH_SHORT).show();
 
 
-
-
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.mipmap.header);
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.header);
 
 
         Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
@@ -142,7 +142,8 @@ public class DetailFragment extends Fragment {
                 }
         );
 
-
+        scroller.setScrollY(200);
+        scroller.setY((float) 200);
         // Obtener extra del intent de envío
         extra = getArguments().getString(EXTRA_ID);
 
