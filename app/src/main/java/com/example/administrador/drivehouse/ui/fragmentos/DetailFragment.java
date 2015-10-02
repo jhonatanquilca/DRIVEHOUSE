@@ -142,7 +142,6 @@ public class DetailFragment extends Fragment {
                 }
         );
 
-        scroller.setScrollY(200);
         scroller.setY((float) 200);
         // Obtener extra del intent de envío
         extra = getArguments().getString(EXTRA_ID);
