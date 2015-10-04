@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.Toolbar;
@@ -65,7 +64,7 @@ public class DetailFragment extends Fragment {
     private TextView fecha_creacion;
     private com.software.shell.fab.FloatingActionButton editButton;
     private AppBarLayout appBar;
-    private NestedScrollView scroller;
+    private Toolbar toolbar;
 
     private String extra;
     private Gson gson = new Gson();
@@ -110,21 +109,35 @@ public class DetailFragment extends Fragment {
         //boton para ir a la activiadad de edicion
         editButton = (com.software.shell.fab.FloatingActionButton) v.findViewById(R.id.fab);
         cabecera = (ImageView) v.findViewById(R.id.image_paralax);
-
-        Toast.makeText(getContext(), "img:" + R.mipmap.header, Toast.LENGTH_SHORT).show();
-
+        toolbar = (Toolbar) v.findViewById(R.id.toolbar);
+//        Toast.makeText(getContext(), "img:" + R.mipmap.header, Toast.LENGTH_SHORT).show();
 
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.header);
 
-
+//Cambia el color de la barra segun la imagen
         Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
             @SuppressWarnings("ResourceType")
             @Override
             public void onGenerated(Palette palette) {
-
-
                 collapser.setContentScrimColor(palette.getMutedColor(getResources().getColor(R.color.fab_material_indigo_500)));
                 collapser.setStatusBarScrimColor(R.color.black);
+            }
+        });
+
+        appBar.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int i) {
+                if (i > (200 * -1) && !editButton.isShown()) {
+                    editButton.playShowAnimation();
+                    editButton.show();
+                } else if (i < (200 * -1) && editButton.isShown()) {
+                    editButton.playHideAnimation();
+                    editButton.hide();
+
+                }
+
+//                Toast.makeText(getContext(), "int:" + i, Toast.LENGTH_SHORT).show();
+
             }
         });
         // Setear escucha para el fab
@@ -142,7 +155,6 @@ public class DetailFragment extends Fragment {
                 }
         );
 
-        scroller.setVerticalScrollbarPosition(200);
         // Obtener extra del intent de envío
         extra = getArguments().getString(EXTRA_ID);
 
